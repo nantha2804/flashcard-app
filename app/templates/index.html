@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flashcards</title>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        .card { border: 1px solid #ddd; padding: 20px; margin: 20px; }
+        button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<h2>Flashcard Generator</h2>
+
+<form method="post" action="/generate">
+    <input type="text" name="topic" placeholder="Enter Topic" required />
+    <button type="submit">Generate</button>
+</form>
+
+{% if cards %}
+<h3>Topic: {{ topic }}</h3>
+
+<div id="flashcard" class="card"></div>
+
+<button onclick="prev()">Prev</button>
+<button onclick="next()">Next</button>
+
+<script>
+    const cards = {{ cards | tojson }};
+    let index = 0;
+
+    function render() {
+        document.getElementById("flashcard").innerHTML =
+            `<b>Q:</b> ${cards[index].question}<br><br><b>A:</b> ${cards[index].answer}`;
+    }
+
+    function next() {
+        index = (index + 1) % cards.length;
+        render();
+    }
+
+    function prev() {
+        index = (index - 1 + cards.length) % cards.length;
+        render();
+    }
+
+    render();
+</script>
+
+{% endif %}
+</body>
+</html>
