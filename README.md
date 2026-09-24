@@ -4,7 +4,7 @@ An AI-powered flashcard application designed to help users create and practice f
 
 ## 🚀 Live Demo
 
-[Open Live Application](https://flashcard-iqxujdfie-snk18.vercel.app/generate)
+[Open Live Application](https://flashcard-iqxujdfie-snk18.vercel.app/)
 
 ## 🛠️ Technologies
 
